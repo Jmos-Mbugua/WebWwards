@@ -4,6 +4,15 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 # Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures/')
+    bio = models.TextField()
+
+    def __str__(self):
+        return self.user.username
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     profile = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -15,14 +24,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self,*args): # new
+        return reverse('home', args=[str(self.id)])
 
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(upload_to='profile_pictures/')
-    bio = models.TextField()
 
-    def __str__(self):
-        return self.user.username
 
 
 

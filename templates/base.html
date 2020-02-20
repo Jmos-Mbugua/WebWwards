@@ -23,7 +23,8 @@
       </ul>
       <nav>
         <div class="nav-wrapper">
-          <a href=" {% url 'home' %} " class="brand-logo">WebWards</a>
+          <a href=" {% url 'home' %} " class="brand-logo">WebWards</a> 
+          
           <ul class="right hide-on-med-and-down">
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}">Logout</a></li>
