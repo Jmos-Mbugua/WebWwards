@@ -1,0 +1,1 @@
+web: gunicorn webwards_project.wsgi --log-file -
