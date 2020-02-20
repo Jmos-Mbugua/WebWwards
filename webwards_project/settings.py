@@ -123,6 +123,7 @@ DATABASES = {
         'NAME': 'awards',
         'USER': 'jmos',
         'PASSWORD': 'postgres',
+        'PORT': 5432
         
     }
 }
